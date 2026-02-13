@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For You 💝</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+  /* ================= MOBILE ONLY FIX ================= */
+@media (max-width: 768px) {
+
+body {
+  overflow-x: hidden;
+}
+
+.page {
+  padding: 32px 16px 80px;
+}
+
+.window {
+  width: 90vw;
+  max-width: 420px;
+}
+
+.buttons {
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-size: 16px;
+  padding: 12px 26px;
+}
+
+.polaroid-stack {
+  width: 78vw;
+  max-width: 280px;
+}
+
+.polaroid img {
+  height: 200px;
+}
+
+.side-gif {
+  width: 100px;
+}
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #fff5f7, #ffe4ec);
+  font-family: 'Dancing Script', cursive;
+  overflow-x: hidden;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ---------- Floating Hearts ---------- */
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 20px;
+  opacity: 0.7;
+  pointer-events: none;
+  animation: floatUp linear forwards;
+}
+@keyframes floatUp {
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+
+/* ---------- Page ---------- */
+.page {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.title {
+  font-size: 36px;
+  color: #c83b6f;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 22px;
+  color: #8a3d5c;
+  margin-bottom: 40px;
+}
+
+/* ---------- Gift Grid ---------- */
+.gifts {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Gift Card ---------- */
+.gift-card {
+  background: white;
+  width: 260px;
+  border-radius: 20px;
+  padding: 20px 16px 28px;
+  box-shadow: 0 18px 40px rgba(255,120,160,0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gift-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 28px 60px rgba(255,120,160,0.35);
+}
+
+/* ---------- GIF ---------- */
+.gift-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 18px;
+}
+
+/* ---------- Button ---------- */
+.gift-btn {
+  padding: 12px 26px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff7aa2, #ffb3c6);
+  color: white;
+  box-shadow: 0 0 16px rgba(255,140,180,0.5);
+  transition: transform 0.3s ease;
+}
+
+.gift-btn:hover {
+  transform: scale(1.08);
+}
+
+/* ---------- Footer Hint ---------- */
+.hint {
+  margin-top: 40px;
+  font-size: 20px;
+  color: #8a3d5c;
+}
+/* ================= MOBILE ONLY FIX ================= */
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .page {
+    padding: 32px 16px 80px;
+  }
+
+  .window {
+    width: 90vw;
+    max-width: 420px;
+  }
+
+  .buttons {
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-size: 16px;
+    padding: 12px 26px;
+  }
+
+  .polaroid-stack {
+    width: 78vw;
+    max-width: 280px;
+  }
+
+  .polaroid img {
+    height: 200px;
+  }
+
+  .side-gif {
+    width: 100px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page">
+  <div class="title">I have something for you chakkarakutti🎁</div>
+  <div class="subtitle">kisses, kisses, kisses and more kisses 💕</div>
+
+  <div class="gifts">
+
+    <!-- Gift 1 -->
+    <div class="gift-card">
+      <img src="gift-admire.gif" alt="gift">
+      <button class="gift-btn" onclick="goPage('page5.html')">
+        to my chakkara 💖
+      </button>
+    </div>
+
+    <!-- Gift 2 -->
+    <div class="gift-card">
+      <img src="love-box.gif" alt="gift">
+      <button class="gift-btn" onclick="goPage('page6.html')">
+        to my honeybun 🍯
+      </button>
+    </div>
+
+    <!-- Gift 3 -->
+    <div class="gift-card">
+      <img src="urso-coração.gif" alt="gift">
+      <button class="gift-btn" onclick="goPage('page7.html')">
+        to my babygirl 🧸
+      </button>
+    </div>
+
+  </div>
+
+  <div class="hint">Each one holds a little piece of my heart 💝</div>
+</div>
+
+<script>
+/* Floating hearts */
+const hearts = ["💖","💕","💗","💘","❤️"];
+setInterval(() => {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (6 + Math.random() * 4) + "s";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 10000);
+}, 400);
+
+/* Navigation with smooth exit */
+function goPage(page) {
+  document.body.style.opacity = "0";
+  document.body.style.transform = "scale(0.97)";
+  setTimeout(() => {
+    window.location.href = page;
+  }, 600);
+}
+</script>
+
+</body>
+</html>

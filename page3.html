@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Forever Us 🌙💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+/* ================= MOBILE ONLY FIX ================= */
+@media (max-width: 768px) {
+
+body {
+  overflow-x: hidden;
+}
+
+.page {
+  padding: 32px 16px 80px;
+}
+
+.window {
+  width: 90vw;
+  max-width: 420px;
+}
+
+.buttons {
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-size: 16px;
+  padding: 12px 26px;
+}
+
+.polaroid-stack {
+  width: 78vw;
+  max-width: 280px;
+}
+
+.polaroid img {
+  height: 200px;
+}
+
+.side-gif {
+  width: 100px;
+}
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1b1026, #0b0613);
+  font-family: 'Dancing Script', cursive;
+  overflow-x: hidden;
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* -------- FLOATING HEARTS -------- */
+.love {
+  position: fixed;
+  bottom: -30px;
+  font-size: 22px;
+  opacity: 0.8;
+  pointer-events: none;
+  animation: floatUp linear forwards;
+}
+@keyframes floatUp {
+  to {
+    transform: translateY(-120vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* -------- SHOOTING STARS -------- */
+.star {
+  position: fixed;
+  width: 2px;
+  height: 90px;
+  background: linear-gradient(transparent, #fff);
+  opacity: 0.6;
+  animation: shoot 4s linear forwards;
+}
+@keyframes shoot {
+  from { transform: translate(-10vw, -10vh) rotate(45deg); }
+  to   { transform: translate(120vw, 120vh) rotate(45deg); opacity: 0; }
+}
+
+/* -------- PAGE -------- */
+.page {
+  text-align: center;
+  padding-top: 40px;
+}
+
+/* -------- WINDOW -------- */
+.window {
+  position: relative;
+  width: 420px;
+  margin: auto;
+}
+.window img { width: 100%; }
+
+.chequered {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  top: 110px;
+  bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+/* -------- QUESTION -------- */
+.question {
+  font-size: 28px;
+  color: #000;
+}
+
+.gif {
+  max-width: 90%;
+  max-height: 65%;
+  object-fit: contain;
+}
+
+/* -------- BUTTONS -------- */
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 14px 36px;
+  border-radius: 40px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.yes {
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: white;
+}
+
+.no {
+  background: transparent;
+  color: #ff8fcf;
+  border: 2px solid #ff8fcf;
+}
+
+/* -------- FINAL -------- */
+.final {
+  display: none;
+  margin-top: 30px;
+}
+
+.message {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(255,140,200,0.4);
+}
+
+/* -------- PAGE 4 BUTTON -------- */
+.top-btn {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #ff4d9d, #ff80bf);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(255,100,180,0.6);
+  z-index: 10;
+}
+
+/* -------- BACK BUTTON (NEW) -------- */
+.back-btn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 26px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #9b5de5, #c77dff);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(180,140,255,0.6);
+  z-index: 10;
+}
+
+/* -------- SIDE GIFS -------- */
+.side-gif {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 140px;
+  opacity: 0;
+}
+.left-gif { left: -200px; animation: slideLeft 1.5s forwards; }
+.right-gif { right: -200px; animation: slideRight 1.5s forwards; }
+
+@keyframes slideLeft { to { left: 30px; opacity: 1; } }
+@keyframes slideRight { to { right: 30px; opacity: 1; } }
+
+/* -------- POLAROIDS -------- */
+.polaroid-stack {
+  position: relative;
+  width: 280px;
+  height: 360px;
+  margin: auto;
+}
+
+.polaroid-glow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle, rgba(255,100,200,0.4), transparent 70%);
+  filter: blur(30px);
+}
+
+.polaroid {
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  padding: 14px 14px 50px;
+  border-radius: 6px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: scale(0.95) rotate(-4deg);
+  transition: all 1.5s ease;
+}
+
+.polaroid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 8px;
+  font-size: 18px;
+  color: #444;
+}
+
+.polaroid.active {
+  opacity: 1;
+  transform: scale(1) rotate(2deg);
+  z-index: 3;
+}
+
+</style>
+</head>
+
+<body>
+
+<button class="top-btn" id="page4Btn" onclick="goPage4()">for you, babygirl 💖</button>
+<button class="back-btn" id="backBtn" onclick="goBack()">← back</button>
+
+<div class="page">
+
+  <!-- QUESTION -->
+  <div class="window" id="windowBox">
+    <img src="window.png">
+    <div class="chequered">
+      <div class="question">Will you be my Valentine?</div>
+      <img src="valentine.gif" class="gif">
+    </div>
+  </div>
+
+  <div class="buttons" id="buttons">
+    <button class="btn yes" onclick="yesClicked()">Yes 💖</button>
+    <button class="btn no" id="noBtn">No 🙈</button>
+  </div>
+
+  <!-- FINAL -->
+  <div class="final" id="final">
+    <div class="message">
+      Yes is the only option, babygirl 💕<br>
+      I've already claimed you, my love 🌙
+    </div>
+
+    <img src="dudu-bubu-love-gif.gif" class="side-gif left-gif">
+    <img src="bear-kiss-bear-kisses.gif" class="side-gif right-gif">
+
+    <div class="polaroid-stack">
+      <div class="polaroid-glow"></div>
+
+      <div class="polaroid active"><img src="begin.jpeg"><div class="caption">Our soft beginnings 💗</div></div>
+      <div class="polaroid"><img src="IMG_7875.JPG"><div class="caption">Holding on to you ✨</div></div>
+      <div class="polaroid"><img src="IMG_E8113.JPG"><div class="caption">Those shoulder lays🤍</div></div>
+      <div class="polaroid"><img src="IMG_3947.JPG"><div class="caption">My favorite view 💕</div></div>
+      <div class="polaroid"><img src="IMG_E8111.JPG"><div class="caption">Always us 🌹</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Floating hearts */
+const hearts=["❤️","💖","💕","💗","💘"];
+setInterval(()=>{
+  const l=document.createElement("div");
+  l.className="love";
+  l.innerText=hearts[Math.floor(Math.random()*hearts.length)];
+  l.style.left=Math.random()*100+"vw";
+  l.style.animationDuration=(6+Math.random()*4)+"s";
+  document.body.appendChild(l);
+  setTimeout(()=>l.remove(),10000);
+},300);
+
+/* Shooting stars */
+setInterval(()=>{
+  const s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"vw";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),4000);
+},4500);
+
+/* NO logic */
+let clicks=0;
+noBtn.onclick=()=>{
+  clicks++;
+  document.querySelector(".yes").style.transform=`scale(${1+clicks*0.3})`;
+  if(clicks>=6) noBtn.style.display="none";
+};
+
+/* YES */
+function yesClicked(){
+  windowBox.style.display="none";
+  buttons.style.display="none";
+  final.style.display="block";
+  page4Btn.style.display="block";
+  backBtn.style.display="block";
+}
+
+/* BACK to question */
+function goBack(){
+  final.style.display="none";
+  windowBox.style.display="block";
+  buttons.style.display="flex";
+  page4Btn.style.display="none";
+  backBtn.style.display="none";
+}
+
+/* Polaroid slideshow */
+let i=0;
+const cards=document.querySelectorAll(".polaroid");
+setInterval(()=>{
+  cards[i].classList.remove("active");
+  i=(i+1)%cards.length;
+  cards[i].classList.add("active");
+},3200);
+
+/* Page 4 */
+function goPage4(){
+  window.location.href="page4.html";
+}
+</script>
+
+</body>
+</html>

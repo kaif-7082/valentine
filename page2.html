@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Love Letter 💌</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Your existing CSS -->
+  <link rel="stylesheet" href="page2.css" />
+
+  <!-- Falling petals CSS -->
+  <style>
+    /* ================= MOBILE ONLY FIX ================= */
+@media (max-width: 768px) {
+
+body {
+  overflow-x: hidden;
+}
+
+.page {
+  padding: 32px 16px 80px;
+}
+
+.window {
+  width: 90vw;
+  max-width: 420px;
+}
+
+.buttons {
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-size: 16px;
+  padding: 12px 26px;
+}
+
+.polaroid-stack {
+  width: 78vw;
+  max-width: 280px;
+}
+
+.polaroid img {
+  height: 200px;
+}
+
+.side-gif {
+  width: 100px;
+}
+}
+
+  
+    .petal {
+      position: fixed;
+      top: -30px;
+      pointer-events: none;
+      opacity: 0.85;
+      z-index: 0;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-20px) translateX(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(110vh) translateX(40px) rotate(360deg);
+      }
+    }
+    
+  </style>
+</head>
+
+<body>
+
+<!-- 🌸 Falling Petals -->
+<script>
+  const petals = ["🌸", "🌹", "💮", "🌷"];
+
+  for (let i = 0; i < 30; i++) {
+    const petal = document.createElement("div");
+    petal.className = "petal";
+    petal.innerText = petals[Math.floor(Math.random() * petals.length)];
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.animationDuration = (6 + Math.random() * 6) + "s";
+    petal.style.animationDelay = Math.random() * 5 + "s";
+    petal.style.fontSize = (16 + Math.random() * 18) + "px";
+    document.body.appendChild(petal);
+  }
+</script>
+
+<!-- 💌 Envelope Animation (UNCHANGED) -->
+<div class="envlope-wrapper">
+  <div id="envelope" class="close">
+    <div class="front flap"></div>
+    <div class="front pocket"></div>
+
+    <div class="letter">
+      <div class="words line1">To: My baby</div>
+      <div class="words line2">Every time I see you,</div>
+      <div class="words line3">my world feels warmer,</div>
+      <div class="words line4">and my heart feels home.</div>
+    </div>
+
+    <div class="hearts">
+      <div class="heart a1"></div>
+      <div class="heart a2"></div>
+      <div class="heart a3"></div>
+    </div>
+  </div>
+</div>
+
+<div class="reset">
+  <button id="open">Open</button>
+  <button id="reset">Close</button>
+</div>
+
+<div class="next-page">
+  <button onclick="goToPage3()">Read what my heart wants to ask… 💌</button>
+</div>
+
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="page2.js"></script>
+
+
+
+  
+</body>
+</html>
+

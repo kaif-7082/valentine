@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Letter From My Heart 💌</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+
+/* ---------- FLOATING HEARTS ---------- */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  opacity:.7;
+  pointer-events:none;
+  animation:floatUp linear forwards;
+}
+@keyframes floatUp{
+  to{transform:translateY(-120vh);opacity:0}
+}
+
+/* ---------- FILM RAIL ---------- */
+.film-rail{
+  position:fixed;
+  top:0;
+  width:120px;
+  height:100vh;
+  background:#111;
+  padding:12px 8px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  overflow:hidden;
+}
+.left{left:0}
+.right{right:0}
+
+.film{
+  background:#222;
+  padding:6px;
+  border-radius:6px;
+}
+.film img{
+  width:100%;
+  height:140px;
+  object-fit:cover;
+  border-radius:4px;
+}
+
+.left .film-strip{
+  animation:scrollUp 35s linear infinite;
+}
+.right .film-strip{
+  animation:scrollDown 35s linear infinite;
+}
+@keyframes scrollUp{
+  to{transform:translateY(-50%)}
+}
+@keyframes scrollDown{
+  from{transform:translateY(-50%)}
+}
+
+/* ---------- CENTER ---------- */
+.center{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:40px;
+}
+
+/* side gifs */
+.side-gif{
+  width:140px;
+}
+
+/* ---------- LETTER ---------- */
+.letter-box{
+  width:420px;
+  background:#fffdf8;
+  padding:32px;
+  border-radius:12px;
+  box-shadow:0 20px 45px rgba(0,0,0,.2);
+  text-align:center;
+}
+
+.letter-box h2{
+  font-family:'Dancing Script',cursive;
+  font-size:34px;
+  color:#b03060;
+  margin-bottom:14px;
+}
+
+#typeText{
+  font-size:17px;
+  line-height:1.7;
+  color:#444;
+  white-space:pre-line;
+  min-height:160px;
+}
+
+/* ---------- BACK BUTTON ---------- */
+.back{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+}
+.back button{
+  padding:12px 26px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff7aa2,#ff4d6d);
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+}
+.back button:hover{transform:scale(1.05)}
+
+@media(max-width:900px){
+  .film-rail{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LEFT FILM -->
+<div class="film-rail left">
+  <div class="film-strip">
+    <div class="film"><img src="IMG_4887.JPG"></div>
+    <div class="film"><img src="IMG_5064.JPG"></div>
+    <div class="film"><img src="IMG_2894.jpg"></div>
+    <div class="film"><img src="IMG_3931.JPG"></div>
+    <div class="film"><img src="IMG_8086.JPG"></div>
+    <div class="film"><img src="IMG-20250102-WA0061.jpg"></div>
+    <div class="film"><img src="IMG-20251012-WA0092.jpg"></div>
+  </div>
+</div>
+
+<!-- RIGHT FILM -->
+<div class="film-rail right">
+  <div class="film-strip">
+    <div class="film"><img src="IMG_3932.JPG"></div>
+    <div class="film"><img src="IMG_3933.JPG"></div>
+    <div class="film"><img src="IMG_7859.JPG"></div>
+    <div class="film"><img src="IMG_3109.jpg"></div>
+    <div class="film"><img src="IMG_8147.JPG"></div>
+    <div class="film"><img src="IMG_9311.JPG"></div>
+    <div class="film"><img src="begin.jpeg"></div>
+  </div>
+</div>
+
+<!-- CENTER -->
+<div class="center">
+
+  <!-- LEFT GIF -->
+  <img src="pengu-pudgy.gif" class="side-gif">
+
+  <!-- LETTER -->
+  <div class="letter-box">
+    <h2>My Love 💌</h2>
+    <div id="typeText"></div>
+  </div>
+
+  <!-- RIGHT GIF -->
+  <img src="kiss-lip-kiss.gif" class="side-gif">
+
+</div>
+
+<!-- BACK -->
+<div class="back">
+  <button onclick="location.href='page4.html'">← Back</button>
+</div>
+
+<script>
+/* ---------- TYPEWRITER ---------- */
+const text = `Every moment with you feels like a quiet miracle.
+
+Your smile calms my storms,
+your presence feels like home,
+and loving you is the most natural thing
+my heart has ever known.
+
+If forever had a feeling 
+it would feel like you. 💕`;
+
+let i = 0;
+const speed = 40;
+function typeWriter(){
+  if(i < text.length){
+    document.getElementById("typeText").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+typeWriter();
+
+/* ---------- FLOATING HEARTS ---------- */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerText=["💖","💕","❤️","💗"][Math.floor(Math.random()*4)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(5+Math.random()*4)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),9000);
+},350);
+</script>
+
+</body>
+</html>
+
+
